@@ -12,7 +12,7 @@ public class UserMapper {
             if(users!=null) {
 		    return User.withUsername(users.getUsername())
 		        .password(users.getPassword())
-		        .roles(users.getRoles().toArray(String[]::new))
+		        .roles(new String[0])
 		        .build();
 		  }
             return null;
