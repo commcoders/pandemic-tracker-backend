@@ -5,7 +5,9 @@ _<place holder>_
 
 ## Techonologies Planned
 
-- (To be Confirmed)
+- SPRING BOOT
+ - HIBERNATE
+ -MYSQL
 
 
 ## Design
