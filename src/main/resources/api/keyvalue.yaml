@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  description: "This is a  specification for keyValue service"
+  version: "1.0.0"
+  title: "keyValue Service contract"
+tags:
+  - name: "keyValue"
+paths:
+   /web/v1/keyValue:
+    get:
+      tags:
+        - "keyValue"
+      summary: "Gets details of keyValue"
+      operationId: "getAllKeyValue"
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          schema:
+            $ref: "#/definitions/keyValueCollection"
+          description: "get keyValueList "
+   /web/v1/keyValue/{category}:
+    get:
+      tags:
+        - "keyValue"
+      summary: "Gets details of keyValue"
+      parameters:
+        - in: path
+          name: category
+          type: "string"
+          required: true
+          description: category of the Keyvalue
+      operationId: "getKeyValueByCategory"      
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          schema:
+            $ref: "#/definitions/keyValueCollection"
+          description: "get keyValueList "  
+definitions:
+  keyValueCollection:
+   type: "object"
+   properties:
+     keyValueList:
+      type: "array"
+      items:
+       $ref: "#/definitions/keyValueModel"
+  keyValueModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      keycode:
+        type: "string"
+      keyDiscription:
+        type: "string"
+      language:
+        type: "string"
+      category:
+        type: "string"
+      
+ 
+ 

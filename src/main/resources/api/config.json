@@ -1,0 +1,7 @@
+{
+  "library": "spring-mvc",
+  "modelPackage": "com.covid.panchayathapp.model",
+  "apiPackage": "com.covid.panchayathapp.api",
+  "invokerPackage": "com.covid.panchayathapp",
+  "useTags":"true"
+}

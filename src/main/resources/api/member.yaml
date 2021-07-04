@@ -1,0 +1,108 @@
+swagger: "2.0"
+info:
+  description: "This is a  specification for member service"
+  version: "1.0.0"
+  title: "member Service contract"
+tags:
+  - name: "member"
+paths:
+   /web/v1/member/{memberId}:
+    get:
+      tags:
+        - "member"
+      summary: "Gets details of member"
+      parameters:
+        - in: path
+          name: memberId
+          type: integer
+          format: int64  
+          required: true
+          description: Numeric ID of the member to get
+      description: ""
+      operationId: "getMember"
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          schema:
+            $ref: "#/definitions/memberModel"
+          description: "get member details"
+   
+definitions:
+  ListMemberResponse:
+    type: "array"
+    items:
+      $ref: "#/definitions/memberModel"
+  memberModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      cluster:
+        type: "string"
+      wardNo:
+        type: "string"
+      houseNo:
+        type: "string"
+      rationcardNo:
+        type: "string"
+      name:
+        type: "string"
+      houseName:
+        type: "string"
+      relationship:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      dateoOfBirth:
+        type: "string"
+      age:
+        type: "string"
+      educationQualification:
+        type: "string"
+      anyOtherIllness:
+        type: "string"
+      occupationCatagory:
+        type: "string"
+      occupation:
+        type: "string"
+      workCountry:
+        type: "string"
+      workState:
+        type: "string"
+      disabled:
+        type: "string"
+      covidVaccineStatus:
+        type: "string"
+      covidVaccineNumber:
+        type: "string"
+      covidVaccineBrand:
+        type: "string"
+      bloodGroup:
+        type: "string"
+      covidStatus:
+        type: "string"
+      covidDdate:
+        type: "string"
+      covidRecoveredDate:
+        type: "string"
+      covidHospitaliziedStatus:
+        type: "string"
+      pensionStatus:
+        type: "string"
+      pensionScheme:
+        type: "string"
+      memberType:
+        type: "string"
+      recordStatus:
+        type: "string"
+      createdDate:
+        type: "string"
+      createdBy:
+        type: "string"
+      updatedBy:
+        type: "string"
+ 
+ 

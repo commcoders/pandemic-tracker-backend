@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  description: "This is a  specification for User service"
+  version: "1.0.0"
+  title: "member Service contract"
+tags:
+  - name: "User"
+paths:
+   /web/v1/user/register:
+    post:
+      tags:
+        - "user"
+      summary: "register User"
+      parameters:
+        - in: body
+          name: registrationDetails
+          required: true
+          description: registrationDetails
+          schema:
+            $ref: "#/definitions/registrationDetails"
+            
+      operationId: "registerUser"
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          description: "registration Done"
+   
+definitions:
+  registrationDetails:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      type:
+        type: "string"
+      rationId:
+        type: "string"
+      adressLine1:
+        type: "string"
+      adressLine12:
+        type: "string"
+      houseName:
+        type: "string"
+      wardNo:
+        type: "string"
+      phoneNumber:
+        type: "string"
+     
+ 
+ 

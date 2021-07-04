@@ -1,0 +1,120 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'org.hidetake.swagger.generator' version '2.18.2'
+	
+
+}
+ext {
+    mapstructVersion = "1.4.2.Final"
+  
+    
+}
+group = 'com.covid'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'com.auth0', name: 'java-jwt', version: '3.10.3'
+	
+	compileOnly group: 'io.swagger', name: 'swagger-annotations', version: '1.6.2'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
+	 implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    testImplementation "org.testng:testng:6.10", "org.easytesting:fest-assert:1.4"
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.8'
+    
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+	implementation 'org.projectlombok:lombok:1.18.12'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.4'  
+}
+
+test {
+	useJUnitPlatform()
+}
+swaggerSources {
+  memberService {
+  def memberyml="${rootDir}/src/main/resources/api/member.yaml"
+  def configJson="${rootDir}/src/main/resources/api/config.json"
+  def ignoreFile="${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
+  inputFile = file(memberyml)
+    code {
+      language = 'spring'
+      configFile=file(configJson)
+      components=['models','apis']
+      rawOptions=['--ignore-file-override',ignoreFile]
+      dependsOn validation
+      
+    }
+  }
+   userService {
+  def useryml="${rootDir}/src/main/resources/api/user.yaml"
+  def configJson="${rootDir}/src/main/resources/api/config.json"
+  def ignoreFile="${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
+  inputFile = file(useryml)
+    code {
+      language = 'spring'
+      configFile=file(configJson)
+      components=['models','apis']
+      rawOptions=['--ignore-file-override',ignoreFile]
+      dependsOn validation
+      
+    }
+  }
+   keyValueService {
+  def keyValueyml="${rootDir}/src/main/resources/api/keyvalue.yaml"
+  def configJson="${rootDir}/src/main/resources/api/config.json"
+  def ignoreFile="${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
+  inputFile = file(keyValueyml)
+    code {
+      language = 'spring'
+      configFile=file(configJson)
+      components=['models','apis']
+      rawOptions=['--ignore-file-override',ignoreFile]
+      dependsOn validation
+      
+    }
+  }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true'
+    ]
+}
+compileJava.dependsOn swaggerSources.memberService.code
+compileJava.dependsOn swaggerSources.userService.code
+compileJava.dependsOn swaggerSources.keyValueService.code
+
+sourceSets.main.java.srcDir "${swaggerSources.keyValueService.code.outputDir}/src/main/java"
+
+sourceSets.main.resources.srcDir "${swaggerSources.keyValueService.code.outputDir}/src/main/resources"
+sourceSets.main.java.srcDir "${swaggerSources.memberService.code.outputDir}/src/main/java"
+
+sourceSets.main.resources.srcDir "${swaggerSources.memberService.code.outputDir}/src/main/resources"
+sourceSets.main.java.srcDir "${swaggerSources.userService.code.outputDir}/src/main/java"
+
+sourceSets.main.resources.srcDir "${swaggerSources.userService.code.outputDir}/src/main/resources"
+
+sourceSets {
+    main.java.srcDirs += "build/generated/sources/annotationProcessor/java/main"
+}
