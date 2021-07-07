@@ -19,11 +19,11 @@ How to build the application
 
  
 ## Techonologies Planned
- -  Graddle
- -  Java 8
-- SPRING BOOT
- - HIBERNATE
- -MYSQL
+ -  Graddle(Need for building)
+ -  Java 8(Need for build)
+- SPRING BOOT(it will be automatically downloaded)
+ - HIBERNATE(it will be automatically downloaded)
+ -MYSQL-to be installed and provide details as mentioned above
 
 
 ## Design
