@@ -3,10 +3,10 @@ Backend Application
 
 _<place holder>_
 How to build the application 
- check out code
- go to the project folder
- ./gradlew clean build  --refresh-dependencies
- the jar  file will be generated in below location 
+ _check out code
+ _go to the project folder
+ _./gradlew clean build  --refresh-dependencies
+ _the jar  file will be generated in below location 
  /build/libs
  
  using the Jar file run below comand
