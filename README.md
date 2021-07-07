@@ -23,7 +23,7 @@ How to build the application
  -  Java 8(Need for build)
 - SPRING BOOT(it will be automatically downloaded)
  - HIBERNATE(it will be automatically downloaded)
- -MYSQL-to be installed and provide details as mentioned above
+ - MYSQL-to be installed and provide details as mentioned above
 
 
 ## Design
