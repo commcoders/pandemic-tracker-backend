@@ -5,6 +5,7 @@ _<place holder>_
 How to build the application 
  - check out code
  - go to the project folder
+ - provide DB connection details in /src/main/resources/application.properties
  - ./gradlew clean build  --refresh-dependencies
  - the jar  file will be generated in below location 
  - /build/libs
