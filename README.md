@@ -7,13 +7,13 @@ How to build the application
  - go to the project folder
  - ./gradlew clean build  --refresh-dependencies
  - the jar  file will be generated in below location 
- /build/libs
+ - /build/libs
  
- using the Jar file run below comand
+ - using the Jar file run below comand
  
- java - jar jarfileName.jar
+- java - jar jarfileName.jar
  
- application will be running on 8080 port
+ -application will be running on 8080 port
  
 
  
