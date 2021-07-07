@@ -3,10 +3,10 @@ Backend Application
 
 _<place holder>_
 How to build the application 
- -check out code
- -go to the project folder
- -./gradlew clean build  --refresh-dependencies
- -the jar  file will be generated in below location 
+ - check out code
+ - go to the project folder
+ - ./gradlew clean build  --refresh-dependencies
+ - the jar  file will be generated in below location 
  /build/libs
  
  using the Jar file run below comand
@@ -18,8 +18,8 @@ How to build the application
 
  
 ## Techonologies Planned
-   Graddle
-   Java 8
+ -  Graddle
+ -  Java 8
 - SPRING BOOT
  - HIBERNATE
  -MYSQL
