@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  description: "This is a  specification for house service"
+  version: "1.0.0"
+  title: "house Service contract"
+
+paths:
+   /web/v1/house/{houseId}:
+    get:
+      tags:
+        - "house"
+      summary: "Gets details of House"
+      parameters:
+        - in: path
+          name: houseId
+          type: integer
+          format: int64  
+          required: true
+          description: Numeric ID of the member to get
+      description: ""
+      operationId: "getHouseDetails"
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          schema:
+            $ref: "#/definitions/houseModel"
+          description: "house details"
+    post:
+      tags:
+        - "house"
+      summary: "create house"
+      parameters:
+        - in: body
+          name: houseModel
+          required: true
+          description: houseModel
+          schema:
+            $ref: "#/definitions/houseModel"
+      operationId: "saveHouse"
+      consumes:
+      - "*/*"
+      produces:
+      - "application/json"
+      responses:    
+        200:
+          description: "create House"   
+definitions:
+  houseModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      cluster:
+        type: "string"
+      wardNo:
+        type: "string"
+      houseNo:
+        type: "string"
+      rationcardNo:
+        type: "string"
+      houseName:
+        type: "string"
+      landName:
+       type: "string" 
+      houseOwner:
+       type: "array"
+       items:
+        $ref: "#/definitions/memberMasterModel"
+      members:
+       type: "array"
+       items:
+        $ref: "#/definitions/memberMasterModel"
+  memberMasterModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      recordStatus:
+        type: "string"
+      createdDate:
+        type: "string"
+      createdBy:
+        type: "string"
+      verifiedDate:
+        type: "string"
+      verifiedBy:
+        type: "string"
+      approvedDate:
+        type: "string"
+      approvedBy:
+        type: "string"
+       

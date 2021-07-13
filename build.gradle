@@ -54,11 +54,11 @@ test {
 	useJUnitPlatform()
 }
 swaggerSources {
-  memberService {
-  def memberyml="${rootDir}/src/main/resources/api/member.yaml"
+  houseService {
+  def houseyml="${rootDir}/src/main/resources/api/house.yaml"
   def configJson="${rootDir}/src/main/resources/api/config.json"
   def ignoreFile="${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
-  inputFile = file(memberyml)
+  inputFile = file(houseyml)
     code {
       language = 'spring'
       configFile=file(configJson)
@@ -103,16 +103,16 @@ tasks.withType(JavaCompile) {
             '-Amapstruct.suppressGeneratorTimestamp=true'
     ]
 }
-compileJava.dependsOn swaggerSources.memberService.code
+compileJava.dependsOn swaggerSources.houseService.code
 compileJava.dependsOn swaggerSources.userService.code
 compileJava.dependsOn swaggerSources.keyValueService.code
 
 sourceSets.main.java.srcDir "${swaggerSources.keyValueService.code.outputDir}/src/main/java"
 
 sourceSets.main.resources.srcDir "${swaggerSources.keyValueService.code.outputDir}/src/main/resources"
-sourceSets.main.java.srcDir "${swaggerSources.memberService.code.outputDir}/src/main/java"
+sourceSets.main.java.srcDir "${swaggerSources.houseService.code.outputDir}/src/main/java"
 
-sourceSets.main.resources.srcDir "${swaggerSources.memberService.code.outputDir}/src/main/resources"
+sourceSets.main.resources.srcDir "${swaggerSources.houseService.code.outputDir}/src/main/resources"
 sourceSets.main.java.srcDir "${swaggerSources.userService.code.outputDir}/src/main/java"
 
 sourceSets.main.resources.srcDir "${swaggerSources.userService.code.outputDir}/src/main/resources"

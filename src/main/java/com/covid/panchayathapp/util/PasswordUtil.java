@@ -5,12 +5,12 @@ import org.apache.commons.text.RandomStringGenerator;
 
 public class PasswordUtil {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(generatePassword());
-
-	}
-	
+	/*
+	 * public static void main(String[] args) { // TODO Auto-generated method stub
+	 * System.out.println(generatePassword());
+	 * 
+	 * }
+	 */
 	public static String generatePassword() {
 		 int length = 10;
 		    boolean useLetters = true;

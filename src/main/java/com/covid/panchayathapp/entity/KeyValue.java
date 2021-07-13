@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "azhi_tb_key_value")
+@Table(name = "keyvalue")
 
 public class KeyValue implements Serializable{
 	 private @Id Long id;

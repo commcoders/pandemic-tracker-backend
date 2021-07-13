@@ -7,11 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
-import com.covid.panchayathapp.api.MemberApi;
 import com.covid.panchayathapp.api.UserApi;
-import com.covid.panchayathapp.model.MemberModel;
 import com.covid.panchayathapp.model.RegistrationDetails;
-import com.covid.panchayathapp.service.MemberService;
 import com.covid.panchayathapp.service.UserRegistrationService;
 @Controller
 public class UserServiceController implements UserApi {
